@@ -37,5 +37,7 @@ module MyApiProject
     config.middleware.use ActionDispatch::Session::CookieStore
     config.middleware.use Rack::MethodOverride
     config.middleware.use ActionDispatch::Flash
+    config.autoload_paths += Dir["#{config.root}/app/models/concerns/**/"]
+
   end
 end
