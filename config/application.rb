@@ -21,6 +21,8 @@ Bundler.require(*Rails.groups)
 
 module MyApiProject
   class Application < Rails::Application
+    # make them public
+    public :importmap, :importmap=
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 

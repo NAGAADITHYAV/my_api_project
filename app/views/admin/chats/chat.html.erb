@@ -1,39 +1,44 @@
-<div id="reply-container">
-  <%= form_for :reply_message, url: {:action=>"reply_message"}, html: { multipart: true } do |f|%>
-    <caption>Reply to the messages</caption>
-    <%= f.hidden_field :receiver_id, :value => @user.id %>
-    <%= f.hidden_field :receiver_type, :value => "user" %>
-    <table>
-      <th></th>
-      <tr>
-        <td>
-          <%= f.text_field :message, :placeholder => "Enter Message" %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%= f.submit 'Reply' %>
-        </td>
-      </tr>
-    </table>
-  <% end %>
-</div>
-
-<div id="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Sender Name</th>
-        <th>Message</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @messages.each do |message| %>
+<head>
+  <%= javascript_importmap_tags %>
+</head>
+<body>
+  <div id="reply-container">
+    <%= form_for :reply_message, url: {:action=>"reply_message"}, html: { multipart: true } do |f|%>
+      <caption>Reply to the messages</caption>
+      <%= f.hidden_field :receiver_id, :value => @user.id %>
+      <%= f.hidden_field :receiver_type, :value => "user" %>
+      <table>
+        <th></th>
         <tr>
-          <td><%= message.sender.email %></td>
-          <td><%= message.message %></td>
+          <td>
+            <%= f.text_field :message, :placeholder => "Enter Message" %>
+          </td>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+        <tr>
+          <td>
+            <%= f.submit 'Reply' %>
+          </td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+  <div id="table-container">
+    <div id="cabledata" data-user-id="<%= @user.id %>" data-admin-user-id="<%= current_admin_user.id %>"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Sender Name</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody id="chat-table-body">
+        <% @messages.each do |message| %>
+          <tr>
+            <td><%= message.sender.email %></td>
+            <td><%= message.message %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</body>

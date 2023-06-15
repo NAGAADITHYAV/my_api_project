@@ -94,6 +94,8 @@ GEM
       activesupport (>= 5.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
+    importmap-rails (0.7.6)
+      rails (>= 6.0.0)
     inherited_resources (1.13.1)
       actionpack (>= 5.2, < 7.1)
       has_scope (~> 0.6)
@@ -231,6 +233,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   devise
+  importmap-rails (~> 0.7.6)
   listen (~> 3.2)
   puma (~> 4.1)
   rails (~> 6.0.6, >= 6.0.6.1)
